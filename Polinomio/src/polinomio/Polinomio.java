@@ -18,4 +18,11 @@ public class Polinomio {
         // TODO code application logic here
     }
     
+    
+    public static void Ejecutar()
+    {
+        System.out.println("Hola mundo");
+        System.out.println("");
+    }
+    
 }
