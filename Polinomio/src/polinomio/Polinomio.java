@@ -5,27 +5,82 @@
  */
 package polinomio;
 
+import java.util.regex.*;// validacion de expresiones regulares 
+
 /**
  *
  * @author jhon
  */
 public class Polinomio {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private int[] polinomio;
+    //Expresion regular para validar la estructura de un polinomio
+    private static final String PATRON_POLINOMIO = "(-?\\b\\d+)[xX]\\^(-?\\d+\\b)";
+    private Pattern patron;
+    private Matcher match;
+
+    public Polinomio(String cadenaPolinomio) {
+        patron = Pattern.compile(PATRON_POLINOMIO);//se carga el patron polinomio
+        polinomio = ConvertirPolinomio(cadenaPolinomio);
     }
-    
-    
-    public static void Ejecutar()
-    {
-        System.out.println("Hola mundo");
-        System.out.println("");
-        //hola muchachos. esto esta como enrredado. 
-        //Será?
-        System.err.println("Ahora sí aparece?");
+
+    public int[] ConvertirPolinomio(String cadena) {
+        match = patron.matcher(cadena);//validacion de expresion regular , captura coeficiente y exponente
+        int count = 0;
+        if (match.lookingAt()) {
+            //contador de monomios , para saber el tamaño del vector forma 2 
+            while (match.find()) {
+                count++;
+            }
+            //cantidad de monomios multiplicado por 2 , para almacenar
+            //coeficiente y exponente .
+            int[] tempPolinomio = new int[(count * 2) + 1];
+            match.reset();//se reinicia el contador para recorrer cada termino (coeficiente y exponente)
+
+            tempPolinomio[0] = count;//numero de terminos
+
+            try {
+                //se recorre cada monomio extrayendo el coeficiente y exponente
+                for (int i = 1; i < count * 2; i = i + 2) {
+
+                    match.find();
+                    //System.out.println(match.group(1));
+                    //                  System.out.println(match.group(2));
+
+                    tempPolinomio[i] = Integer.parseInt(match.group(1));//coeficiente
+                    tempPolinomio[i + 1] = Integer.parseInt(match.group(2));//exponente
+                }
+
+            } catch (Exception ex) {
+                System.err.println(ex);
+                return null;
+            }
+            return tempPolinomio;
+        } else {
+            return null;
+        }
+
     }
-    
+
+    public int[] RetornaPolinomio() {
+        return polinomio;
+    }
+
+    public void MostrarPolinomio() {
+        String output = "";
+        // se valida que el polinomio no este vacio
+        if (polinomio != null) {
+            for (int i = 1; i < polinomio.length; i = i + 2) {
+                if (polinomio[i] > 0 && i > 1) {
+                    output += "+";
+                }
+                output = String.format("%s%sx^%s", output, polinomio[i], polinomio[i + 1]);// se concatena exponente y coeficiente
+            }
+            System.out.println(output);
+        } else {
+            System.out.println("Polinomio Vacio");
+        }
+
+    }
+
 }
