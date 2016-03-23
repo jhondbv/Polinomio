@@ -25,6 +25,7 @@ public class Polinomio {
         System.out.println("");
         //hola muchachos. esto esta como enrredado. 
         //Será?
+        System.err.println("Ahora sí aparece?");
     }
     
 }
