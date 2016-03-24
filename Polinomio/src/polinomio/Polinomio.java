@@ -12,7 +12,7 @@ import java.util.regex.*;// validacion de expresiones regulares
  * @author jhon
  */
 public class Polinomio {
-
+  
     private int[] polinomio;
     //Expresion regular para validar la estructura de un polinomio
     private static final String PATRON_POLINOMIO = "(-?\\b\\d+)[xX]\\^(-?\\d+\\b)";
@@ -24,9 +24,10 @@ public class Polinomio {
         polinomio = ConvertirPolinomio(cadenaPolinomio);
     }
 
-    public int[] ConvertirPolinomio(String cadena) {
+    private int[] ConvertirPolinomio(String cadena) {
         match = patron.matcher(cadena);//validacion de expresion regular , captura coeficiente y exponente
         int count = 0;
+        
         if (match.lookingAt()) {
             //contador de monomios , para saber el tamaño del vector forma 2 
             while (match.find()) {
@@ -45,7 +46,7 @@ public class Polinomio {
 
                     match.find();
                     //System.out.println(match.group(1));
-                    //                  System.out.println(match.group(2));
+                    //System.out.println(match.group(2));
 
                     tempPolinomio[i] = Integer.parseInt(match.group(1));//coeficiente
                     tempPolinomio[i + 1] = Integer.parseInt(match.group(2));//exponente
