@@ -59,7 +59,7 @@ public class Main {
                     System.out.println("El grado del Polinommio 2 es: " + p2.gradoPol());
                     if (multi!=null)
                     {
-                        System.out.println("El grado de la multiplicacion es: " + multi.gradoPol());
+                        System.out.println("El grado de la multiplicacion de los 2 polinomios: " + multi.gradoPol());
                     }
 
                     break;
