@@ -55,7 +55,8 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("eligio " + elec);
+                    System.out.println("El grado del Polinommio 1 es: " + p.gradoPol());
+                    System.out.println("El grado del Polinommio 2 es: " + p2.gradoPol());
 
                     break;
                 case 4:

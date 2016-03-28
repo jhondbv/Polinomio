@@ -169,10 +169,10 @@ public class Polinomio {
             return multiplicados;  
         }
 
-    public int gradoPol(int[] pol) //muestra el grado de un polinomio
+    public int gradoPol() //muestra el grado de un polinomio
     {
         int grado;
-        grado = pol[1];  
+        grado = polinomio[1];  
         return grado;
     }
 
