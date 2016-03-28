@@ -27,7 +27,7 @@ public class Main {
         String input2 = scan.nextLine();
 
         int elec = 0;      //variable de elecion para el menu    --arley
-        Polinomio multi;     // polinomio para la multiplicacion --arley
+        Polinomio multi = null;     // polinomio para la multiplicacion --arley
 
         Polinomio p2 = new Polinomio(input2);
 
@@ -57,6 +57,10 @@ public class Main {
                 case 3:
                     System.out.println("El grado del Polinommio 1 es: " + p.gradoPol());
                     System.out.println("El grado del Polinommio 2 es: " + p2.gradoPol());
+                    if (multi.RetornaPolinomio()!=null)
+                    {
+                        System.out.println("El grado de la multiplicacion es: " + multi.gradoPol());
+                    }
 
                     break;
                 case 4:
