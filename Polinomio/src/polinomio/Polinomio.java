@@ -30,7 +30,7 @@ public class Polinomio {
 
     private int[] ConvertirPolinomio(String cadena) {
         match = patron.matcher(cadena);//validacion de expresion regular , captura coeficiente y exponente
-        int count = 0;
+        int count = 1;
         
         if (match.lookingAt()) {
             //contador de monomios , para saber el tamaño del vector forma 2 
