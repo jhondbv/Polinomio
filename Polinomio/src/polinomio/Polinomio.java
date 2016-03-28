@@ -23,6 +23,10 @@ public class Polinomio {
         patron = Pattern.compile(PATRON_POLINOMIO);//se carga el patron polinomio
         polinomio = ConvertirPolinomio(cadenaPolinomio);
     }
+    public Polinomio(int [] pol) //constructor para la multilpicacion
+    {
+        polinomio = pol;
+    }
 
     private int[] ConvertirPolinomio(String cadena) {
         match = patron.matcher(cadena);//validacion de expresion regular , captura coeficiente y exponente
@@ -83,7 +87,7 @@ public class Polinomio {
         }
 
     }
-    
+     
      public int [] multiplicarPol(int[] pol1, int[] pol2)
         { 
             int tamAux;
@@ -161,7 +165,7 @@ public class Polinomio {
                  } 
               }  
              }
- 
+           
             return multiplicados;  
         }
 
