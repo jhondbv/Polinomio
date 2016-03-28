@@ -83,5 +83,94 @@ public class Polinomio {
         }
 
     }
+    
+     public int [] multiplicarPol(int[] pol1, int[] pol2)
+        { 
+            int tamAux;
+            int tamReal;
+            int n1;
+            int n2;
+            int k = 2;
+            int cont = 0;
+           
+            tamAux = ((pol1[0] * pol2[0])*2)+1;
+           int [] polAux = new int [tamAux];
+           n1 = pol1.length;
+           n2 = pol2.length;
+           polAux[0] = pol1[0]*pol2[0];
+           
+             for( int i=2; i<= n1; i = i+2)//multiplicacion inicial de los polinomios
+            {
+            for( int j=2; j<= n2; j = j+2)
+            {     
+                polAux[k] = pol1[i]*pol2[j];
+                polAux[k-1] = pol1[i-1] + pol2[j-1]; 
+                k = k+2;
+            }
+            }
+                    
+         int aux;
+         for(int i=1;i<polAux.length-1;i=i+2){ //ordenamiento del polinomio resultado
+              for(int j=1;j<polAux.length-i-1;j=j+2){
+                   if(polAux[j+2]>polAux[j]){
+                      aux=polAux[j+2];
+                      polAux[j+2]=polAux[j];
+                      polAux[j]=aux;
+                      
+                      aux=polAux[j+3];
+                      polAux[j+3]=polAux[j+1];
+                      polAux[j+1]=aux;
+                   }
+              }
+         }
+            int j=3;
+            for (int i=1; i<polAux.length; i=i+2) //sumando terminos semejantes
+             {    j=i+2;         
+               while (j<polAux.length){
+                 
+                   if (polAux[j] == polAux[i]&& polAux[i]!= 0)
+                 {
+                    
+                    polAux[i+1] = polAux[i+1] + polAux[j+1];
+                    polAux[j] =0;
+                    polAux[j+1] =0;
+                    cont++;
+                 }
+                   j = j+2;
+               }
+             }
+            
+           tamReal = (((pol1[0]*pol2[0])*2)+1) - (cont*2);  
+          int [] multiplicados = new int[tamReal];
+              multiplicados[0] = (tamReal-1)/2;
+                   j=1;
+               int i=1;
+            while ( i<multiplicados.length) //creando el resultado en un vector forma 2
+             {           
+              if(polAux[j+1]==0)
+                   {
+                   j = j+2;
+                   }
+              else{
+                  if(polAux[j+1]!=0)
+                 {       
+                     multiplicados[i] = polAux[j];
+                     multiplicados[i+1] = polAux[1+j];
+                     j = j+2;
+                     i = i+2;
+                 } 
+              }  
+             }
+ 
+            return multiplicados;  
+        }
+
+    public int gradoPol(int[] pol) //muestra el grado de un polinomio
+    {
+        int grado;
+        grado = pol[1];  
+        return grado;
+    }
+
 
 }
