@@ -48,8 +48,8 @@ public class Polinomio {
                     //System.out.println(match.group(1));
                     //System.out.println(match.group(2));
 
-                    tempPolinomio[i] = Integer.parseInt(match.group(1));//coeficiente
-                    tempPolinomio[i + 1] = Integer.parseInt(match.group(2));//exponente
+                    tempPolinomio[i+1] = Integer.parseInt(match.group(1));//coeficiente
+                    tempPolinomio[i] = Integer.parseInt(match.group(2));//exponente
                 }
 
             } catch (Exception ex) {
@@ -75,7 +75,7 @@ public class Polinomio {
                 if (polinomio[i] > 0 && i > 1) {
                     output += "+";
                 }
-                output = String.format("%s%sx^%s", output, polinomio[i], polinomio[i + 1]);// se concatena exponente y coeficiente
+                output = String.format("%s%sx^%s", output, polinomio[i+1], polinomio[i]);// se concatena exponente y coeficiente
             }
             System.out.println(output);
         } else {
