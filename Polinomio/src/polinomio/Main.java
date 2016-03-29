@@ -14,66 +14,50 @@ import polinomio.Polinomio;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+    //Metodo Principal
+
     public static void main(String[] args) {
-        // TODO code application logic here
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese el polinomio 1 .\n");
-        String input = scan.nextLine();
-        Polinomio p = new Polinomio(input);
-        System.out.println("Ingrese el polinomio 2 .\n");
-        String input2 = scan.nextLine();
-
-        int elec = 0;      //variable de elecion para el menu    --arley
-        Polinomio multi = null;     // polinomio para la multiplicacion --arley
-
-        Polinomio p2 = new Polinomio(input2);
-
-        if (p.RetornaPolinomio() == null || p2.RetornaPolinomio() == null) {
-            System.err.println("No se pudo crear el polinomio , revise la estructura");
+        String input, input2;
+        Polinomio p1, p2, Resultado = null;
+        int elec = 0;
+        System.out.println("**BIENVENIDO**");
+        System.out.println("Ingrese el primer polinomio. \n");
+        input = scan.nextLine();
+        p1 = new Polinomio(input);
+        System.out.println("Ingrese el segundo polinomio.\n");
+        input2 = scan.nextLine();
+        p2 = new Polinomio(input2);
+        //Se valida la estructura de los dos polinomios ingresados
+        if (p1.RetornaPolinomio() == null || p2.RetornaPolinomio() == null) {
+            System.err.println("El primer polinomio ó el segundo polinomio no posee una estructura correcta , revise la estructura");
             return;
         }
-
-        while (elec != 5) {     // MENU del programa  --arley
-            System.out.println("Escriba el numero de la operacion que desea realizar: \n \n 1. Sumar los Polinomios \n 2. Multiplicar Polinomios\n 3. Indicar el Grado del polinomio \n 4. Imprimir los términos independientes de los polinomios.\n 5. Salir\n");
-
+        //Navegación por las diferentes opciones
+        while (elec != 5) {
+            System.out.println("Ingrese el numero de la operacion que desea realizar: \n \n 1. Sumar los Polinomios \n 2. Multiplicar Polinomios\n 3. Indicar el Grado de los polinomios \n 4. Imprimir los términos independientes de los polinomios.\n 5. Salir\n");
             elec = scan.nextInt();
             switch (elec) {
-
                 case 1:
-                    System.out.println("Suma de polinomios ");
+                    System.out.println("Eligio Suma de polinomios ");
+                    Resultado = new Polinomio(p1.sumar(p1.RetornaPolinomio(), p2.RetornaPolinomio()));
+                    Resultado.MostrarPolinomio();
                     break;
-
                 case 2:
-                    System.out.println("Resultado de la Multiplicacion de polinomios: \n");
-
-                    multi = new Polinomio(p.multiplicarPol(p.RetornaPolinomio(), p2.RetornaPolinomio()));
-                    multi.MostrarPolinomio();
-
+                    System.out.println("Eligio Multiplicación de polinomios: \n");
+                    Resultado = new Polinomio(p1.multiplicarPol(p1.RetornaPolinomio(), p2.RetornaPolinomio()));
+                    Resultado.MostrarPolinomio();
                     break;
-
                 case 3:
-                    System.out.println("El grado del Polinommio 1 es: " + p.gradoPol());
-                    System.out.println("El grado del Polinommio 2 es: " + p2.gradoPol());
-                    if (multi!=null)
-                    {
-                        System.out.println("El grado de la multiplicacion de los 2 polinomios: " + multi.gradoPol());
-                    }
-
+                    System.out.println("Grado del Polinommio 1: (" + p1.gradoPol() + ").\n\"Grado del Polinommio 2: (" + p2.gradoPol() + ").");
                     break;
                 case 4:
-
+                    System.out.println("Elijio ver los Terminos independientes: \nTermino independiente del polinomio 1: (" + p1.independiente() + ").\nTermino independiente del polinomio 2: (" + p2.independiente() + ").");
                     break;
                 case 5:
                     System.err.println("Hasta la proxima.");
                     break;
-
             }
-
         }
-
     }
-
 }
