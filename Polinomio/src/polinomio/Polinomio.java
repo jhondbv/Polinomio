@@ -241,8 +241,12 @@ public class Polinomio {
     //Método para mostrar el termino independiente de un polinomio
 
     public int independiente() {
+        int b = 0;
         int a = polinomio.length;
-        int b = polinomio[a - 1];
+        if(polinomio[a-2]==0){
+        b = polinomio[a-1];
+      
+        }
         return b;
     }
 }
