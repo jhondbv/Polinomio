@@ -76,7 +76,8 @@ public class Polinomio {
         // se valida que el polinomio no este vacio
         if (polinomio != null) {
             for (int i = 1; i < polinomio.length; i = i + 2) {
-                if (polinomio[i] > 0 && i > 1) {
+               // if (polinomio[i] > 0 && i > 1) { se cambia por el orden de los coeficientes
+                if (polinomio[i+1] > 0 && i > 1) {
                     output += "+";
                 }
                 output = String.format("%s%sx^%s", output, polinomio[i+1], polinomio[i]);// se concatena exponente y coeficiente
