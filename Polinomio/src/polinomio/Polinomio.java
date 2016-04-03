@@ -19,6 +19,10 @@ public class Polinomio {
     private Pattern patron;
     private Matcher match;
 
+    /**
+     *Valida la estructura del texto ingresado para convertir en polinomio 
+     * @param cadenaPolinomio  cadena de caracteres que representan al polinomio 
+     */
     public Polinomio(String cadenaPolinomio) {
         patron = Pattern.compile(PATRON_POLINOMIO);//se carga el patron polinomio
         polinomio = ConvertirPolinomio(cadenaPolinomio);
@@ -26,12 +30,22 @@ public class Polinomio {
 
     //constructor para la multilpicacion
 
+    /**
+     *Constructor 
+     * @param pol arreglo de entero representado como vector forma 2
+     */
+
     public Polinomio(int[] pol) {
         polinomio = pol;
     }
 
-    //Metodo para convertir los polinomios ingresados
-
+    
+   
+/**
+ * Metodo para convertir los polinomios ingresados
+ * @param cadena polinomio en una cadena de texto
+ * @return  vector en forma 2 como representacion del polinomio ingresado por parametro
+ */
     private int[] ConvertirPolinomio(String cadena) {
         match = patron.matcher(cadena);//validacion de expresion regular , captura coeficiente y exponente
         int count = 1;
@@ -70,11 +84,20 @@ public class Polinomio {
 
     //Método que devuelve un polinomio cuando sea requerido
 
+    /**
+     *Retorna el polinomio correspondiente
+     * @return Vector en fomra 2 correspondiente al polinomio actual
+     */
+
     public int[] RetornaPolinomio() {
         return polinomio;
     }
 
-    //Método para mostrar un polinomio con toda su estructura.
+    //
+
+    /**
+     * Método para mostrar un polinomio con toda su estructura.
+     */
 
     public void MostrarPolinomio() {
         String output = "";
@@ -93,7 +116,14 @@ public class Polinomio {
         }
     }
 
-    //Método para multiplicar polinomios 
+    
+
+    /**
+     * Método para multiplicar polinomios 
+     * @param pol1 polinomio 1 en vector forma 2 
+     * @param pol2 polinomio 2 en vector forma 2 
+     * @return arreglo vector forma 2 resultado de la multiplicacion
+     */
 
     public int[] multiplicarPol(int[] pol1, int[] pol2) {
         int tamAux;
@@ -165,7 +195,14 @@ public class Polinomio {
         return multiplicados;
     }
 
-    //Método para sumar polinomios
+    
+
+    /**
+     *Suma dos polinomios
+     * @param a polinomio a representado en vector forma 2 
+     * @param b polinomio b representado en vector forma 2 
+     * @return arreglo en vector forma 2 resultado de la suma de a+b
+     */
 
     public int[] sumar(int[] a, int[] b) {
         int m = a.length;
@@ -230,7 +267,11 @@ public class Polinomio {
         return x; // Devuelve el resultado de la suma de dos polinomios
     }
 
-    //Método para mostrar el grado de un polinomio
+
+    /**
+     *Método para mostrar el grado de un polinomio
+     * @return entero correspondiente al grado del polinomio
+     */
 
     public int gradoPol() {
         int grado;
@@ -238,7 +279,12 @@ public class Polinomio {
         return grado;
     }
 
-    //Método para mostrar el termino independiente de un polinomio
+   
+
+    /**
+     *Método para mostrar el termino independiente de un polinomio
+     * @return Coeficiente correspondiente al termino independiente
+     */
 
     public int independiente() {
         int b = 0;

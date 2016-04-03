@@ -14,7 +14,12 @@ import polinomio.Polinomio;
  */
 public class Main {
 
-    //Metodo Principal
+    
+
+    /**
+     *Metodo Principal
+     * @param args argumento default
+     */
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
